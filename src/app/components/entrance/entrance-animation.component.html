@@ -1,0 +1,41 @@
+<!-- Overlay de tela cheia -->
+<div
+  class="entrance-overlay"
+  [class.entrance-overlay--fading]="bursting()"
+  aria-modal="true"
+  role="dialog"
+  aria-label="Clique para entrar"
+>
+
+  <!-- Partículas geradas ao clicar -->
+  <div class="particles-container" aria-hidden="true">
+    <span
+      *ngFor="let p of particles(); trackBy: trackById"
+      class="heart-particle"
+      [style.--tx]="p.x + 'vw'"
+      [style.--ty]="p.y + 'vh'"
+      [style.--dur]="p.duration + 'ms'"
+      [style.--delay]="p.delay + 'ms'"
+      [style.--size]="p.size + 'px'"
+      [style.--rot]="p.rotate + 'deg'"
+      [style.--opacity]="p.opacity"
+    >♥</span>
+  </div>
+
+  <!-- Conteúdo central -->
+  <div class="entrance-content" [class.entrance-content--hidden]="bursting()">
+    <p class="entrance-tagline">toque para abrir</p>
+
+    <button
+      class="heart-btn"
+      (click)="onHeartClick()"
+      [disabled]="bursting()"
+      aria-label="Abrir nossa história"
+    >
+      <span class="heart-btn__icon" aria-hidden="true">♥</span>
+    </button>
+
+    <p class="entrance-hint">nossa história</p>
+  </div>
+
+</div>

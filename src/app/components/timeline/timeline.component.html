@@ -1,0 +1,53 @@
+<section class="relative max-w-2xl mx-auto px-6 py-20 sm:py-28">
+  <header class="text-center mb-14 sm:mb-20">
+    <p class="font-script text-rose text-2xl sm:text-3xl mb-1">cada capítulo</p>
+    <h2 class="font-display text-3xl sm:text-4xl font-semibold text-parchment">
+      Linha do tempo
+    </h2>
+  </header>
+
+  <ol class="relative list-none border-l border-gold/20 ml-3 sm:ml-4">
+    <li
+      *ngFor="let momento of momentos(); let i = index; trackBy: trackByMomentoId"
+      [style.--i]="i"
+      class="reveal-on-load relative pl-8 sm:pl-10 pb-14 last:pb-0"
+    >
+      <!-- Marcador na linha do tempo -->
+      <span
+        class="absolute -left-[11px] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-gold/40 bg-dusk text-[10px]"
+      >
+        {{ momento.icone || '✦' }}
+      </span>
+
+      <article
+        class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden shadow-glow"
+      >
+        <img
+          [src]="momento.imagem"
+          [alt]="momento.titulo"
+          loading="lazy"
+          class="w-full aspect-[4/3] sm:aspect-video object-cover bg-dusk"
+        />
+
+        <div class="p-5 sm:p-6">
+          <p class="text-xs uppercase tracking-[0.2em] text-gold mb-2">
+            {{ momento.data | date: "dd 'de' MMMM 'de' y" : '' : 'pt-BR' }}
+          </p>
+
+          <h3 class="font-display text-xl sm:text-2xl font-semibold text-parchment mb-2 text-balance">
+            {{ momento.titulo }}
+          </h3>
+
+          <p class="text-sm sm:text-base text-haze leading-relaxed mb-3">
+            {{ momento.descricao }}
+          </p>
+
+          <p class="flex items-center gap-1.5 text-xs sm:text-sm text-rose">
+            <span aria-hidden="true">📍</span>
+            {{ momento.local }}
+          </p>
+        </div>
+      </article>
+    </li>
+  </ol>
+</section>

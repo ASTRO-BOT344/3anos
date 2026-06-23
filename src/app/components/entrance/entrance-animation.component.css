@@ -1,0 +1,129 @@
+/* === OVERLAY ============================================================= */
+.entrance-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(120% 120% at 50% 0%, #2a1845 0%, #1b1033 45%, #120b22 100%);
+  transition: opacity 0.6s ease 1.6s, visibility 0.6s ease 1.6s;
+}
+
+.entrance-overlay--fading {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* === CONTEÚDO CENTRAL ==================================================== */
+.entrance-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+.entrance-content--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.entrance-tagline {
+  font-family: 'Caveat', cursive;
+  color: #9d8fb8;
+  font-size: 1.125rem;
+  letter-spacing: 0.08em;
+}
+
+.entrance-hint {
+  font-family: 'Caveat', cursive;
+  color: #9d8fb8;
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* === BOTÃO CORAÇÃO ======================================================= */
+.heart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  outline-offset: 8px;
+  transition: transform 0.15s ease;
+}
+
+.heart-btn:hover {
+  transform: scale(1.12);
+}
+
+.heart-btn:active {
+  transform: scale(0.96);
+}
+
+.heart-btn__icon {
+  display: block;
+  font-size: clamp(5rem, 20vw, 9rem);
+  color: #e8607a;
+  filter: drop-shadow(0 0 30px rgba(232, 96, 122, 0.6))
+          drop-shadow(0 0 60px rgba(232, 96, 122, 0.3));
+  animation: heart-beat 1.4s ease-in-out infinite;
+}
+
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.15); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.08); }
+  56%       { transform: scale(1); }
+}
+
+/* === PARTÍCULAS DE CORAÇÃO =============================================== */
+.particles-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heart-particle {
+  position: absolute;
+  font-size: var(--size, 20px);
+  color: #e8607a;
+  opacity: 0;
+  transform-origin: center;
+  animation: fly-out var(--dur, 1600ms) var(--delay, 0ms) ease-out forwards;
+}
+
+@keyframes fly-out {
+  0% {
+    opacity: var(--opacity, 0.8);
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  60% {
+    opacity: var(--opacity, 0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(var(--tx, 20vw), var(--ty, -20vh)) rotate(var(--rot, 15deg)) scale(0.3);
+  }
+}
+
+/* Respeita preferência de movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  .heart-btn__icon {
+    animation: none;
+  }
+  .heart-particle {
+    animation: none;
+    opacity: 0;
+  }
+  .entrance-overlay {
+    transition: opacity 0.1s ease, visibility 0.1s ease;
+  }
+}

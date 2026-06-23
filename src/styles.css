@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap');
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-night-gradient text-parchment font-body antialiased;
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Thin, dim scrollbar that fits the night-sky palette */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(232, 184, 61, 0.25);
+  border-radius: 999px;
+}
+
+/* Leaflet popup re-theme to match the site palette */
+.leaflet-popup-content-wrapper {
+  background: #1b1033;
+  color: #f5ede4;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(232, 184, 61, 0.25);
+}
+.leaflet-popup-tip {
+  background: #1b1033;
+}
+.leaflet-popup-content-wrapper a {
+  color: #e8b83d;
+}

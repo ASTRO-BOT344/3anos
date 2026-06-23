@@ -1,0 +1,26 @@
+/* Animação de entrada puramente em CSS: roda automaticamente quando o
+   card é renderizado, sem depender de scroll/IntersectionObserver — ou
+   seja, o conteúdo nunca corre o risco de ficar "preso" invisível.
+   O `both` no fill-mode garante que o estado inicial (opacity:0) só vale
+   enquanto a animação não rodou; ao terminar, o card fica 100% visível. */
+.reveal-on-load {
+  animation: fade-up 0.6s ease-out both;
+  animation-delay: min(calc(var(--i, 0) * 90ms), 500ms);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-load {
+    animation: none;
+  }
+}

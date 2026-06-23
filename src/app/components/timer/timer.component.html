@@ -1,0 +1,35 @@
+<section class="relative flex flex-col items-center text-center px-6">
+  <p class="font-script text-rose text-2xl sm:text-3xl mb-2">desde aquele dia</p>
+
+  <h1 class="font-display text-4xl sm:text-6xl font-semibold text-parchment text-balance leading-tight">
+    Nossa História
+  </h1>
+
+  <p class="mt-3 text-haze text-sm sm:text-base tracking-wide">
+    {{ dataInicio | date: "dd 'de' MMMM 'de' y" : '' : 'pt-BR' }}
+  </p>
+
+  <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 w-full max-w-2xl">
+    @for (unidade of [
+      { valor: tempoDecorrido().dias, rotulo: 'dias' },
+      { valor: tempoDecorrido().horas, rotulo: 'horas' },
+      { valor: tempoDecorrido().minutos, rotulo: 'minutos' },
+      { valor: tempoDecorrido().segundos, rotulo: 'segundos' }
+    ]; track unidade.rotulo) {
+      <div
+        class="timer-card relative rounded-2xl border border-gold/20 bg-white/5 backdrop-blur-sm py-6 px-2 shadow-glow"
+      >
+        <span class="block font-display text-3xl sm:text-5xl font-semibold text-gold tabular-nums">
+          {{ paraDoisDigitos(unidade.valor) }}
+        </span>
+        <span class="block mt-1 text-[11px] sm:text-xs uppercase tracking-[0.2em] text-haze">
+          {{ unidade.rotulo }}
+        </span>
+      </div>
+    }
+  </div>
+
+  <p class="mt-8 max-w-md text-sm sm:text-base text-haze text-balance">
+    E o contador nunca para — porque a nossa história também não.
+  </p>
+</section>

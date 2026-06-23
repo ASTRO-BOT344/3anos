@@ -1,0 +1,29 @@
+.timer-card {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.timer-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.timer-card:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.timer-card:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 24px -10px rgba(232, 184, 61, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 32px -6px rgba(232, 184, 61, 0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timer-card {
+    animation: none;
+  }
+}
