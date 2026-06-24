@@ -1,2 +1,85 @@
-/* Estilos específicos da página inicial podem entrar aqui.
-   Por enquanto, todo o visual vem das classes Tailwind nos templates. */
+/* ── root ──────────────────────────────────────────────────────────────── */
+.tabs-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+/* ── tab bar ────────────────────────────────────────────────────────────── */
+.tabs-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(18, 11, 34, 0.85);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(232, 184, 61, 0.12);
+}
+
+/* ── individual tab button ──────────────────────────────────────────────── */
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #9d8fb8;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: #f5ede4;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.tab-btn--active {
+  color: #e8b83d;
+  background: rgba(232, 184, 61, 0.1);
+  border-color: rgba(232, 184, 61, 0.3);
+}
+
+.tab-emoji { font-size: 0.9rem; }
+
+/* On small screens, hide the label and show only the emoji */
+@media (max-width: 380px) {
+  .tab-label { display: none; }
+  .tab-btn   { padding: 0.5rem 0.75rem; }
+}
+
+/* ── content area ───────────────────────────────────────────────────────── */
+.tabs-content { flex: 1; }
+
+.tab-panel { animation: panel-in 0.3s ease; }
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.tab-panel--centered {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* ── footer ─────────────────────────────────────────────────────────────── */
+.tabs-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem 3rem;
+  cursor: default;
+  user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel { animation: none; }
+}

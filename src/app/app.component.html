@@ -1,1 +1,7 @@
-<app-home />
+@if (showEntrance()) {
+  <app-entrance (closed)="onEntranceClosed()" />
+}
+
+@if (!showEntrance()) {
+  <app-home />
+}

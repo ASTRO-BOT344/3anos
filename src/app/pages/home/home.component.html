@@ -1,20 +1,78 @@
-<main class="relative overflow-hidden">
-  <!-- Hero / contador -->
-  <div class="pt-16 sm:pt-24 pb-14 sm:pb-20">
-    <app-timer />
-  </div>
+<!-- ===== WRAPPER ========================================================== -->
+<div class="tabs-root">
 
-  <!-- Divisor sutil entre o hero e a linha do tempo -->
-  <div class="flex justify-center mb-2" aria-hidden="true">
-    <span class="h-12 w-px bg-gradient-to-b from-gold/40 to-transparent"></span>
-  </div>
+  <!-- ===== BARRA DE ABAS ================================================== -->
+  <nav class="tabs-nav" role="tablist" aria-label="Seções do site">
+    <button
+      *ngFor="let tab of tabs"
+      role="tab"
+      [id]="'tab-' + tab.id"
+      [attr.aria-selected]="abaAtiva() === tab.id"
+      [attr.aria-controls]="'panel-' + tab.id"
+      class="tab-btn"
+      [class.tab-btn--active]="abaAtiva() === tab.id"
+      (click)="mudarAba(tab.id)"
+    >
+      <span class="tab-emoji" aria-hidden="true">{{ tab.emoji }}</span>
+      <span class="tab-label">{{ tab.label }}</span>
+    </button>
+  </nav>
 
-  <app-timeline />
+  <!-- ===== PAINÉIS ======================================================== -->
+  <main class="tabs-content">
 
-  <app-map-view />
+    <!-- Aba 1 — História -->
+    <section
+      id="panel-historia"
+      role="tabpanel"
+      aria-labelledby="tab-historia"
+      [hidden]="abaAtiva() !== 'historia'"
+      class="tab-panel"
+    >
+      <app-timeline />
+    </section>
 
-  <footer class="text-center pb-12 px-6">
-    <p class="font-script text-rose text-xl mb-1">De seu grande amor Caio</p>
-    <p class="text-haze text-xs tracking-wide">feito para celebrar a nossa história 💛</p>
+    <!-- Aba 2 — Futuro -->
+    <section
+      id="panel-futuro"
+      role="tabpanel"
+      aria-labelledby="tab-futuro"
+      [hidden]="abaAtiva() !== 'futuro'"
+      class="tab-panel"
+    >
+      <app-bucket-list />
+    </section>
+
+    <!-- Aba 3 — Nosso Tempo -->
+    <section
+      id="panel-tempo"
+      role="tabpanel"
+      aria-labelledby="tab-tempo"
+      [hidden]="abaAtiva() !== 'tempo'"
+      class="tab-panel tab-panel--centered"
+    >
+      <div class="pt-16 sm:pt-24 pb-20">
+        <app-timer />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== RODAPÉ (easter egg: 3 cliques) ================================= -->
+  <footer
+    class="tabs-footer"
+    (click)="onFooterClick()"
+    title="💌"
+  >
+    <p class="font-script text-rose text-xl mb-1">dê seu grande amor, Caio</p>
+    <p class="text-haze text-xs tracking-wide">
+      feito para celebrar a nossa história 💛
+    </p>
   </footer>
-</main>
+
+</div>
+
+<!-- ===== MODAL — CARTA SECRETA (global, sobrepõe qualquer aba) ============ -->
+@if (mostrarCarta()) {
+  <app-secret-letter (closed)="fecharCarta()" />
+}

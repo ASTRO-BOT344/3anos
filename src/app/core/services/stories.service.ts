@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Momento } from '../models/momento.interface';
+import { BucketListItem } from '../models/bucket-list-item.interface';
 
 /**
  * Data fixa de início do relacionamento.
@@ -101,5 +102,20 @@ export class StoriesService {
   /** Retorna um único momento pelo id, útil para uma futura tela de detalhe. */
   getMomentoPorId(id: string): Momento | undefined {
     return this.momentos.find((momento) => momento.id === id);
+  }
+
+  /* ── Bucket List (sonhos futuros do casal) ──────────────────────────── */
+  private readonly bucketList: BucketListItem[] = [
+    { id: 'gramado',              destino: 'Gramado, RS',             descricao: 'Ver o Natal Luz e tomar cacau quente no mesmo banco.',              coordenadas: { lat: -29.3792, lng: -50.8757 }, icone: '🎄', realizado: false },
+    { id: 'fernando-de-noronha',  destino: 'Fernando de Noronha, PE', descricao: 'Mergulhar no mar mais claro do Brasil.',                           coordenadas: { lat:  -3.8547, lng: -32.4239 }, icone: '🐠', realizado: false },
+    { id: 'chapada-diamantina',   destino: 'Chapada Diamantina, BA',  descricao: 'Ver a Cachoeira da Fumaça e dormir sob o céu estrelado.',           coordenadas: { lat: -12.4705, lng: -41.3317 }, icone: '🌊', realizado: false },
+    { id: 'lencois-maranhenses',  destino: 'Lençóis Maranhenses, MA', descricao: 'Caminhar entre as dunas e nadar nas lagoas azuis.',                 coordenadas: { lat:  -2.5148, lng: -43.1235 }, icone: '🏜️', realizado: false },
+    { id: 'iguazu',               destino: 'Cataratas do Iguaçu, PR', descricao: 'Sentir a força da água e ver o arco-íris na névoa.',                coordenadas: { lat: -25.6953, lng: -54.4367 }, icone: '🌈', realizado: false },
+    { id: 'pantanal',             destino: 'Pantanal, MT',            descricao: 'Ver uma onça pintada de perto — de dentro do barco.',               coordenadas: { lat: -17.7239, lng: -57.5119 }, icone: '🐆', realizado: false },
+    { id: 'paraty-realizado',     destino: 'Paraty, RJ',              descricao: 'Já fomos! A cidade colonial e o mar verde valeram cada quilômetro.', coordenadas: { lat: -23.2178, lng: -44.7131 }, icone: '✅', realizado: false },
+  ];
+
+  getBucketList(): BucketListItem[] {
+    return [...this.bucketList];
   }
 }

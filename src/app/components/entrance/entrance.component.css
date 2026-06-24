@@ -1,0 +1,99 @@
+/* ── overlay ────────────────────────────────────────────────────────────── */
+.entrance-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(120% 120% at 50% 0%,
+    #2a1845 0%, #1b1033 45%, #120b22 100%);
+  /* fade-out comes 1.8 s after exploding class is added */
+  transition: opacity 0.5s ease 1.9s, visibility 0.5s ease 1.9s;
+}
+.entrance-wrap--out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── particles layer ────────────────────────────────────────────────────── */
+.particles-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.heart-p {
+  position: absolute;
+  font-size: var(--size, 18px);
+  color: #e8607a;
+  opacity: 0;
+  animation: heart-fly var(--dur, 1600ms) var(--delay, 0ms) ease-out forwards;
+}
+@keyframes heart-fly {
+  0%   { opacity: var(--opacity,.8); transform: translate(0,0) rotate(0deg) scale(1); }
+  65%  { opacity: var(--opacity,.8); }
+  100% { opacity: 0; transform: translate(var(--tx,20vw),var(--ty,-20vh)) rotate(var(--rot,15deg)) scale(0.25); }
+}
+
+/* ── centre block ───────────────────────────────────────────────────────── */
+.center-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  user-select: none;
+  transition: opacity 0.25s ease;
+}
+.center-block--hidden { opacity: 0; pointer-events: none; }
+
+.label-top {
+  font-family: 'Caveat', cursive;
+  color: #9d8fb8;
+  font-size: 1.1rem;
+  letter-spacing: .08em;
+}
+.label-bottom {
+  font-family: 'Caveat', cursive;
+  color: #9d8fb8;
+  font-size: 1.5rem;
+  letter-spacing: .05em;
+}
+
+/* ── heart button ───────────────────────────────────────────────────────── */
+.heart-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  transition: transform .15s;
+}
+.heart-btn:hover  { transform: scale(1.1); }
+.heart-btn:active { transform: scale(0.95); }
+
+.heart-icon {
+  display: block;
+  font-size: clamp(5rem, 20vw, 9rem);
+  color: #e8607a;
+  filter:
+    drop-shadow(0 0 28px rgba(232,96,122,.65))
+    drop-shadow(0 0 56px rgba(232,96,122,.3));
+  animation: heartbeat 1.4s ease-in-out infinite;
+}
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  14%     { transform: scale(1.16); }
+  28%     { transform: scale(1); }
+  42%     { transform: scale(1.09); }
+  56%     { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart-icon { animation: none; }
+  .heart-p    { animation: none; opacity: 0; }
+  .entrance-wrap { transition: opacity .1s, visibility .1s; }
+}

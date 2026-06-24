@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+[leaflet] {
+  width: 100%;
+  height: 100%;
+  background: #120b22;
+}
+
+/* Marcadores do bucket-list — classe diferente de .momento-marker para
+   garantir zero conflito com os marcadores da linha do tempo. */
+::ng-deep .bucket-marker {
+  background: transparent;
+  border: none;
+}
+
+::ng-deep .bucket-marker__pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 0 2px rgba(245, 237, 228, 0.8), 0 4px 10px rgba(0, 0, 0, 0.4);
+  font-size: 13px;
+}
+
+::ng-deep .bucket-marker__emoji {
+  display: block;
+  transform: rotate(45deg);
+}
+
+/* Popup temático */
+::ng-deep .leaflet-popup-content-wrapper {
+  background: #1b1033;
+  color: #f5ede4;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+::ng-deep .leaflet-popup-tip {
+  background: #1b1033;
+}
+
+::ng-deep .leaflet-popup-content strong {
+  color: #a78bfa;
+}

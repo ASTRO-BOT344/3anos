@@ -1,0 +1,38 @@
+<div
+  class="entrance-wrap"
+  [class.entrance-wrap--out]="exploding()"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Toque para entrar"
+>
+  <!-- Partículas de coração -->
+  <div class="particles-layer" aria-hidden="true">
+    <span
+      *ngFor="let p of particles(); trackBy: trackById"
+      class="heart-p"
+      [style.--tx]="p.tx"
+      [style.--ty]="p.ty"
+      [style.--size]="p.size"
+      [style.--dur]="p.dur"
+      [style.--delay]="p.delay"
+      [style.--opacity]="p.opacity"
+      [style.--rot]="p.rot"
+    >♥</span>
+  </div>
+
+  <!-- Centro -->
+  <div class="center-block" [class.center-block--hidden]="exploding()">
+    <p class="label-top">toque para abrir</p>
+
+    <button
+      class="heart-btn"
+      (click)="onHeartClick()"
+      [disabled]="exploding()"
+      aria-label="Abrir nossa história"
+    >
+      <span class="heart-icon" aria-hidden="true">♥</span>
+    </button>
+
+    <p class="label-bottom">nossa história</p>
+  </div>
+</div>
