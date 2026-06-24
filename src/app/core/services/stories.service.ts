@@ -48,7 +48,7 @@ export class StoriesService {
     {
       id: 'primeira-vez-exapicor',
       data: new Date('2023-08-14'),
-      titulo: 'A primeira indo na exapicor"',
+      titulo: 'A primeira vez indo na exapicor"',
       descricao:
         'A nossa primeira vez indo na exapicor juntos, fomos na roda gigante e no kamikaze, lembro que quase meu óculos e meu guarda-chuva .',
       imagem: '/assets/images/IMG-20241014-WA0012.jpg',
@@ -82,7 +82,7 @@ export class StoriesService {
     {
       id: 'tres-anos',
       data: new Date('2026-06-26'),
-      titulo: '3 anos — e contando',
+      titulo: '3 anos e contando',
       descricao:
         'Três anos não foram suficientes para enjoar de você. Que venham muitos outros.',
       imagem: '/assets/images/Gemini_Generated_Image_ikrw24ikrw24ikrw.png',
@@ -111,7 +111,7 @@ export class StoriesService {
     { id: 'chapada-diamantina',   destino: 'Chapada Diamantina, BA',  descricao: 'Ver a Cachoeira da Fumaça e dormir sob o céu estrelado.',           coordenadas: { lat: -12.4705, lng: -41.3317 }, icone: '🌊', realizado: false },
     { id: 'lencois-maranhenses',  destino: 'Lençóis Maranhenses, MA', descricao: 'Caminhar entre as dunas e nadar nas lagoas azuis.',                 coordenadas: { lat:  -2.5148, lng: -43.1235 }, icone: '🏜️', realizado: false },
     { id: 'iguazu',               destino: 'Cataratas do Iguaçu, PR', descricao: 'Sentir a força da água e ver o arco-íris na névoa.',                coordenadas: { lat: -25.6953, lng: -54.4367 }, icone: '🌈', realizado: false },
-    { id: 'pantanal',             destino: 'Pantanal, MT',            descricao: 'Ver uma onça pintada de perto — de dentro do barco.',               coordenadas: { lat: -17.7239, lng: -57.5119 }, icone: '🐆', realizado: false },
+    { id: 'pantanal',             destino: 'Pantanal, MT',            descricao: 'Ver uma onça pintada de perto de dentro do barco.',               coordenadas: { lat: -17.7239, lng: -57.5119 }, icone: '🐆', realizado: false },
     { id: 'paraty-realizado',     destino: 'Paraty, RJ',              descricao: 'Já fomos! A cidade colonial e o mar verde valeram cada quilômetro.', coordenadas: { lat: -23.2178, lng: -44.7131 }, icone: '✅', realizado: false },
   ];
 
