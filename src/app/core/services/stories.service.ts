@@ -48,7 +48,7 @@ export class StoriesService {
     {
       id: 'primeira-vez-exapicor',
       data: new Date('2023-08-14'),
-      titulo: 'A primeira vez indo na exapicor"',
+      titulo: 'A primeira vez indo na exapicor',
       descricao:
         'A nossa primeira vez indo na exapicor juntos, fomos na roda gigante e no kamikaze, lembro que quase meu óculos e meu guarda-chuva .',
       imagem: '/assets/images/IMG-20241014-WA0012.jpg',
